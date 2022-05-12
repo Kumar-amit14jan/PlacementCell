@@ -7,7 +7,16 @@ module.exports.SignInPage = async function (req, res) {
     });
 }
 module.exports.SignIn = async function (req, res) {
-    return res.send('Welcome');
+    if(!validator.isEmail(req.body.email)){
+        return res.redirect('back');
+    }else{
+        const employeePresent = await Employee.findOne({email : req.body.email});
+        if(!employeePresent){
+            return res.redirect('back');
+        }else{
+            return res.send('welcome');
+        }
+    }
 }
 // sign up page for employee
 module.exports.createSessionPage = async function (req, res) {
