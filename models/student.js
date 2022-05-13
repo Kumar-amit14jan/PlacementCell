@@ -8,6 +8,10 @@ const student = new mongoose.Schema({
         type:String,
         required : true
     },
+    email :{
+        type : String,
+        required : true
+    },
     college:{
         type:String,
         required: true

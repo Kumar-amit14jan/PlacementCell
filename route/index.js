@@ -6,4 +6,5 @@ router.get('/', employee.SignInPage);
 router.post('/sign_in' , employee.SignIn);
 router.get('/signUp' , employee.createSessionPage);
 router.post('/create_session' , employee.createSession);
+router.use('/employee', require('./employeedashboard'));
 module.exports = router; 
