@@ -33,10 +33,11 @@ const student = new mongoose.Schema({
         type : Number,
         default:0
     },
-    interview : [{
+    interviews : [{
         type : mongoose.Types.ObjectId,
         ref:'Interview'
-    }]
+    }],
+    
 },{timestamps :true});
 const Student = mongoose.model('Student' , student);
 module.exports = Student;

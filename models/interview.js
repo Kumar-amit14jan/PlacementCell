@@ -8,14 +8,13 @@ const interview = new mongoose.Schema({
         type : Date,
         default : Date.now()
     },
-    reault :{
-        type : String,
-        enum : ['PASS' , 'FAIL' , 'On Hold' , 'Didnot Attemp'],
-        default : 'On Hold'
-    },
-    student :[{
+    students :[{
         type : mongoose.Schema.Types.ObjectId,
         ref :'Student'
+    }],
+    result:[{
+        type : mongoose.Schema.Types.ObjectId,
+        ref :'Result'
     }]
 },{timestamps : true});
 const Interview = mongoose.model('Interview' , interview);

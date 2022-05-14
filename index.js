@@ -3,7 +3,7 @@ const expressLayout = require('express-ejs-layouts');
 const port =process.env.PORT || 8000;
 const app = express();
 const db= require('./config/mongoose');
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 app.set('view engine' , 'ejs');
 app.set('views' , './views');
 app.use(expressLayout);
