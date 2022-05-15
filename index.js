@@ -7,6 +7,7 @@ app.use(express.urlencoded({extended:true}));
 app.set('view engine' , 'ejs');
 app.set('views' , './views');
 app.use(expressLayout);
+app.use(express.static('./assets'))
 app.use('/' , require('./route/index'));
 app.listen(port , function(error){
     if(error){

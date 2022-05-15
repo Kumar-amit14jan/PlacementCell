@@ -1,0 +1,79 @@
+body{
+    background-color: rgb(251,251,251);
+}
+nav{
+    background-color:rgb(3,45,107);
+    padding: 15px;
+}
+a{
+    text-decoration: none;
+    font-size: 20px;
+    padding-left: 10px;
+    color: white;
+}
+#heading{
+    border:1px solid black;
+    margin-top: 5%;
+    height: 15%;
+    width:90%;
+    padding: 2%;
+    font-family: cursive;
+    font-size: 30px;
+    background-color: rgb(101,85,120);
+    color: white;
+}
+section{
+    margin-left: 10%;
+}
+#apply{
+    text-decoration: none;
+}
+#apportunity {
+    display : flex;
+    padding:10px;
+    justify-content: space-between;
+    
+}
+#card_content{
+    display: flex;
+    padding:10px;
+    margin-top: 5%;
+    width: 90%;
+    justify-content:space-between;
+    align-items: center;
+    background-color: rgb(255,255,255);
+}
+#companyName{
+    font-size: 20px;
+    font-family:  'Arial';
+    font-weight: 100;
+    color: rgb(255,167,189);
+}
+#image{
+    margin: 10px;
+}
+p{
+    font-size: 30px;
+    font-family: sans-serif;
+}
+#content{
+    margin:10px;
+}
+span{
+    padding:5px;
+    color: grey;
+}
+#details >div {
+    padding: 5px;
+}
+#button_to_apply{
+    padding-right: 20%;
+}
+button{
+    font-size: 25px;
+    padding: 10px;
+    width: 150%;
+    border-radius: 41%;
+    border: 1px solid white;
+    background-color: grey;
+}

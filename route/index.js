@@ -8,4 +8,5 @@ router.post('/create_session' , employee.createSession);
 router.use('/employee', require('./employeedashboard'));
 router.use('/student', require('./interview'));
 router.use('/result' , require('./result'));
+router.use('/job' , require('./job'));
 module.exports = router; 
