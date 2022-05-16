@@ -1,32 +1,39 @@
+<link rel="stylesheet" href="/css/result.css">
 <nav>
     <a href="/student/interview_list">Interview List</a>
 </nav>
-<h1>Result Update</h1>
-<div>
-    <table>
-        <tr>
-            <th>CompanyName</th>
-            <th>StudentName</th>
-            <th>Result</th>
-        </tr>
-        <tr>
-            <td>
-                <%= companyResult.companyName %>
-            </td>
-            <% for(var i=0 ; i<companyResult.students.length ; i++ ) { %>
+<section>
+    <h1>Result Update:</h1>
+    <div>
+        <table>
+            <tr>
+                <th>CompanyName</th>
+                <th>StudentName</th>
+                <th>Email</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>
+                    <%= companyResult.companyName %>
+                </td>
+                <% for(var i=0 ; i<companyResult.students.length ; i++ ) { %>
 
-                <td>
-                    <%= companyResult.students[i].name %>
-                </td>
-                <td>
-                    <form action="/result/update" method="POST">
-                        <input type="text" name="result" placeholder="Update Result" required="true">
-                        <input type="hidden" name="interviewId" value="<%= companyResult.id %>">
-                        <input type="hidden" name="studentId" value="<%= companyResult.students[i].id %>">
-                        <button>Update</button>
-                    </form>
-                </td>
-        </tr>
-        <% } %>
-    </table>
-</div>
+                    <td>
+                        <%= companyResult.students[i].name %>
+                    </td>
+                    <td>
+                        <%= companyResult.students[i].email %>
+                    </td>
+                    <td>
+                        <form action="/result/update" method="POST">
+                            <input type="text" name="result" placeholder="Update Result" required="true">
+                            <input type="hidden" name="interviewId" value="<%= companyResult.id %>">
+                            <input type="hidden" name="studentId" value="<%= companyResult.students[i].id %>">
+                            <button>Update</button>
+                        </form>
+                    </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</section>

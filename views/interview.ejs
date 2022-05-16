@@ -1,20 +1,27 @@
+<link rel="stylesheet" href="/css/interview.css">
 <nav>
     <a href="/employee/dashboard">Home</a>
 </nav>
-<h1>This is interview list</h1>
-<div>
-    <table>
-        <tr>
-            <th>SNO.</th>
-            <th>CompanyName</th>
-            <th>Action</th>
-        </tr>
-        <% for(var i = 0 ; i<interview_list.length ; i++) { %>
+<section>
+    <h1>Company List:</h1>
+    <div>
+        <table>
             <tr>
-                <td><%= i + 1 %></td>
-                <td><%= interview_list[i].companyName %></td>
-                <td><button><a href="/result/<%= interview_list[i].id %>">Mark Result</a></button></td>
+                <th>SNO.</th>
+                <th>CompanyName</th>
+                <th>Action</th>
             </tr>
-        <% } %>
-    </table>
-</div>
+            <% for(var i=0 ; i<interview_list.length ; i++) { %>
+                <tr>
+                    <td>
+                        <%= i + 1 %>
+                    </td>
+                    <td>
+                        <%= interview_list[i].companyName %>
+                    </td>
+                    <td><button><a href="/result/<%= interview_list[i].id %>">Mark Result</a></button></td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+</section>
