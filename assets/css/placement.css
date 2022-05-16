@@ -1,18 +1,23 @@
 body{
     background-color: rgb(251,251,251);
 }
+
 nav{
-    background-color:rgb(3,45,107);
-    padding: 15px;
+    padding:15px;
+    background-color: rgb(3, 45, 107);
+    margin-top: -5%;
+    width: 100%;
+    position:fixed;
+
 }
 a{
-    text-decoration: none;
-    font-size: 20px;
     padding-left: 10px;
+    text-decoration: none;
     color: white;
+    font-size: 20px;
+
 }
 #heading{
-    border:1px solid black;
     margin-top: 5%;
     height: 15%;
     width:90%;
@@ -21,6 +26,7 @@ a{
     font-size: 30px;
     background-color: rgb(101,85,120);
     color: white;
+    
 }
 section{
     margin-left: 10%;

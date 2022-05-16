@@ -1,0 +1,14 @@
+nav{
+    padding:15px;
+    background-color: rgb(3,45,107);
+    margin-top: -0.4%;
+    width: 100%;
+
+}
+a{
+    padding-left: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+
+}
