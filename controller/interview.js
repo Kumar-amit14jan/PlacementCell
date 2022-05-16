@@ -4,7 +4,7 @@ module.exports.interviewPage = async function (req, res) {
     const studentList = await Student.find({});
     const interview_list = await Interview.find({});
     return res.render('interview', {
-        title: "Interview",
+        title: "Interview List",
         studentList: studentList,
         interview_list: interview_list
 

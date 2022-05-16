@@ -1,13 +1,14 @@
+<link rel="stylesheet" href="/css/employeeDashboard.css">
 <nav>
     <a href="#">Home</a>
     <a href="/employee/student">Student</a>
-    <a href="/student/interview_list">Interview</a>
+    <a href="/student/interview_list">Interview List</a>
     <a href="/job/list">Placement Cell</a>
-    <a href="/employee/download">Download</a>
+    <a href="/employee/download">Download Data</a>
 </nav>
 <section>
     <div>
-        <h1>Student List</h1>
+        <h1>List Of All Student </h1>
         <table>
             <tr>
                 <th>SNo .</th>
@@ -50,7 +51,8 @@
                     <td>
                         <%= studentList[i].React_FinalScore %>
                     </td>
-                    <td><button><a href="/student/<%= studentList[i].id %>">Interview Allocation</a></button></td>
+                    <td><button><a id="linkToAllocateInterview" href="/student/<%= studentList[i].id %>">Interview
+                                Allocation</a></button></td>
                     <% } %>
                 </tr>
         </table>

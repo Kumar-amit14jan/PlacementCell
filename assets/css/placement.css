@@ -1,11 +1,12 @@
 body{
     background-color: rgb(251,251,251);
+    width:100%;
 }
 
 nav{
     padding:15px;
     background-color: rgb(3, 45, 107);
-    margin-top: -5%;
+    margin-top: -1%;
     width: 100%;
     position:fixed;
 
@@ -18,7 +19,8 @@ a{
 
 }
 #heading{
-    margin-top: 5%;
+    margin-top: 10%;
+    margin-bottom: 5%;
     height: 15%;
     width:90%;
     padding: 2%;
@@ -26,6 +28,7 @@ a{
     font-size: 30px;
     background-color: rgb(101,85,120);
     color: white;
+    display: inline-block;
     
 }
 section{

@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(251,251,251);
+}
+section{
+    text-align: center;
+    margin: 5%;
+    padding: 50px;
+    width: 50%;
+    margin-left: 25%;
+    background-color: rgb(255,255,255);
+}
+h1{
+    font-style: oblique;
+    margin-bottom: 5%;
+}
+input{
+    width: 60%;
+    padding: 5px;
+    margin: 10px;
+    font-size: 20px;
+    border: 2px solid lightgrey;
+}
+input:focus { 
+    outline: none ;
+    border: 1px solid cyan;
+    box-shadow: 5px lightblue;
+
+}
+button{
+    width: 20%;
+    height:50%;
+    font-size: 20px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}

@@ -1,0 +1,37 @@
+body{
+    background-color: rgb(251,251,251);
+}
+nav{
+    position: fixed;
+}
+section{
+    margin: 2%;
+    display: inline;
+
+}
+h1{
+    margin-top: 4%;
+    margin-bottom: 2%;
+    font-style: oblique;
+}
+table{
+    width:100%;
+    font-family: sans-serif;
+    border-collapse: collapse;
+}
+
+th,td{
+    text-align: left;
+    padding: 10px;
+    margin: 4px;
+    border:1px solid lightgrey;
+}
+#linkToAllocateInterview{
+    font-size: 15px;
+}
+button{
+    background-color: black;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 2%;
+}
