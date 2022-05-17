@@ -1,21 +1,22 @@
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
+const env = require('./config/environment');
 const port = process.env.PORT || 8000;
 const app = express();
-const db = require('./config/mongoose');
+const db = require(env.db_path);
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
-const passportLocal = require('./config/passport-local-strategy');
-const customMware = require('./config/flashMessage');
+const passportLocal = require(env.passport_path);
+const customMware = require(env.customMware_path);
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(expressLayout);
-app.use(express.static('./assets'));
+app.use(express.static(env.assets_path));
 app.use(session({
     name: 'placementCell',
-    secret: 'placementCell',
+    secret: env.secret_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
