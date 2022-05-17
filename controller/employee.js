@@ -7,15 +7,10 @@ module.exports.SignInPage = async function (req, res) {
     });
 }
 module.exports.SignIn = async function (req, res) {
-    if(!validator.isEmail(req.body.email)){
-        return res.redirect('back');
-    }else{
-        const employeePresent = await Employee.findOne({email : req.body.email});
-        if(!employeePresent){
-            return res.redirect('back');
-        }else{
-            return res.send('welcome');
-        }
+    try{
+        return res.redirect('/employee/dashboard');
+    }catch(error){
+        return res.send('<h1>Error in SignIn</h1>');
     }
 }
 // sign up page for employee
@@ -41,7 +36,7 @@ module.exports.createSession = async function (req, res) {
             }
         }
     } catch (error) {
-        return res.send("Error in SignUp");
+        return res.send("<h1>Error in SignUp</h1>");
     }
 
 

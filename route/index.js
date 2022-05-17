@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const employee = require('../controller/employee');
 router.get('/', employee.SignInPage);
-router.post('/sign_in' , employee.SignIn);
+router.post('/sign_in' , passport.authenticate('local', { failureRedirect: '/' }), employee.SignIn);
 router.get('/signUp' , employee.createSessionPage);
 router.post('/create_session' , employee.createSession);
 router.use('/employee', require('./employeedashboard'));
