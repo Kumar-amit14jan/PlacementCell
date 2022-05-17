@@ -9,6 +9,7 @@ module.exports.SignInPage = async function (req, res) {
 }
 module.exports.SignIn = async function (req, res) {
     try {
+        req.flash('success' , 'Sign In SuccessFully');
         return res.redirect('/employee/dashboard');
     } catch (error) {
         return res.send('<h1>Error in SignIn</h1>');
@@ -23,12 +24,15 @@ module.exports.createSessionPage = async function (req, res) {
 module.exports.createSession = async function (req, res) {
     try {
         if (!validator.isEmail(req.body.email)) {
+            req.flash('error' , 'Please Enter Valid Email ');
             return res.redirect('back');
         } else if (req.body.password.length < 2) {
+            req.flash('error' , 'Password is Small !!');
             return res.redirect('back');
         } else {
             const employeePresent = await Employee.findOne({ email: req.body.email });
             if (employeePresent) {
+                req.flash('error' , 'Employee Already Exist !!');
                 return res.redirect('back');
             } else {
                 const registerEmployee = await Employee(req.body);
@@ -38,6 +42,7 @@ module.exports.createSession = async function (req, res) {
                 //now set employee password to hashpassword
                 registerEmployee.password = await bcrypt.hash(registerEmployee.password , salt);
                 await registerEmployee.save();
+                req.flash('success' , 'Sign Up SuccessFully !!');
                 return res.redirect('/');
             }
         }
@@ -51,5 +56,6 @@ module.exports.createSession = async function (req, res) {
 // to sign out
 module.exports.SignOut = async function(req ,res){
     req.logout();
+    req.flash('success' , 'Sign Out SuccessFully');
     return res.redirect('/');
 }

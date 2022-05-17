@@ -50,6 +50,7 @@ module.exports.interviewAllocation = async function (req, res) {
                 await company.save();
             }
         }
+        req.flash('success' , 'Interview Allocate To Student SuccessFully !!')
         return res.redirect('/employee/dashboard');
     } catch (error) {
         return res.send("Error in allocating interview")

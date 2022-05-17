@@ -3,9 +3,11 @@ const expressLayout = require('express-ejs-layouts');
 const port = process.env.PORT || 8000;
 const app = express();
 const db = require('./config/mongoose');
+const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const customMware = require('./config/flashMessage');
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -23,6 +25,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+app.use(customMware.setFlash);
 app.use('/', require('./route/index'));
 app.listen(port, function (error) {
     if (error) {

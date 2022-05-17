@@ -27,7 +27,9 @@ module.exports.update = async function (req, res) {
             const studentPresent = await Student.findById(sid);
             studentPresent.status = "placed";
             await studentPresent.save();
+            req.flash('success' , 'Status Updated !!');
         }
+        req.flash('success' , 'Result Updated !!');
         return res.redirect('back');
     } catch (error) {
         return res.send("Error in updating data")

@@ -7,8 +7,8 @@ router.post('/sign_in', passport.authenticate('local', { failureRedirect: '/' })
 router.get('/signUp', employee.createSessionPage);
 router.get('/destroy_session' , employee.SignOut);
 router.post('/create_session', employee.createSession);
-router.use('/employee',passport.checkAuthentication, require('./employeedashboard'));
-router.use('/student',passport.checkAuthentication, require('./interview'));
-router.use('/result',passport.checkAuthentication, require('./result'));
-router.use('/job',passport.checkAuthentication, require('./job'));
+router.use('/employee', require('./employeedashboard'));
+router.use('/student', require('./interview'));
+router.use('/result', require('./result'));
+router.use('/job', require('./job'));
 module.exports = router; 
