@@ -1,3 +1,4 @@
+const bcrypt= require('bcrypt');
 const Employee = require('../models/employee');
 const validator = require('validator');
 //sign in page for employee
@@ -7,9 +8,9 @@ module.exports.SignInPage = async function (req, res) {
     });
 }
 module.exports.SignIn = async function (req, res) {
-    try{
+    try {
         return res.redirect('/employee/dashboard');
-    }catch(error){
+    } catch (error) {
         return res.send('<h1>Error in SignIn</h1>');
     }
 }
@@ -32,6 +33,11 @@ module.exports.createSession = async function (req, res) {
             } else {
                 const registerEmployee = await Employee(req.body);
                 registerEmployee.save();
+                // generate salt
+                const salt = await bcrypt.genSalt(10);
+                //now set employee password to hashpassword
+                registerEmployee.password = await bcrypt.hash(registerEmployee.password , salt);
+                await registerEmployee.save();
                 return res.redirect('/');
             }
         }

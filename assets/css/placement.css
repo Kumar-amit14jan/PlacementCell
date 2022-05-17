@@ -11,6 +11,10 @@ nav{
     position:fixed;
 
 }
+nav > a:hover{
+    border-bottom: 4px solid orange;
+    padding-bottom: 11px;
+}
 a{
     padding-left: 10px;
     text-decoration: none;

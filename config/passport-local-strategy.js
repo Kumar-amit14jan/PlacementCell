@@ -1,12 +1,12 @@
 const passport = require('passport');
 const passportLocals = require('passport-local').Strategy;
 const Employee = require('../models/employee');
+const bcrypt = require('bcrypt');
 let passportcallback = async function (email, password, done) {
     try {
-        // console.log(req.body);
-        console.log('hi passport')
         const employeePresent = await Employee.findOne({ email: email });
-        if (!employeePresent || employeePresent.password != password) {
+        const validate = await bcrypt.compare(password, employeePresent.password);
+        if (!employeePresent || !validate) {
             return done(null, flase);
         }
         return done(null, employeePresent);
@@ -21,13 +21,20 @@ passport.serializeUser(function (employee, done) {
 
 const deserializeUserCallback = async function (email, done) {
     try {
-        const employeeLogin = await Employee.findOne({email : email});
-        console.log(employeeLogin);
-        return done(null , employeeLogin);
+        const employeeLogin = await Employee.findOne({ email: email });
+        return done(null, employeeLogin);
     } catch (error) {
         return done(error);
     }
 }
 passport.deserializeUser(deserializeUserCallback);
+//now check user is authenticated or not
+passport.checkAuthentication = function (req, res, next) {
+    if (req.isAuthenticated()) {
+        // req.user contains user details
+        return next();
+    }
+    return res.redirect('/');
+}
 
 module.exports = passport;

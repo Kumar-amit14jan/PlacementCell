@@ -5,8 +5,8 @@ nav{
     position: fixed;
 }
 section{
-    margin: 2%;
-    display: inline;
+    display: inline-block;
+    margin: 1%;
 
 }
 h1{
@@ -33,5 +33,5 @@ button{
     background-color: black;
     padding: 5px;
     border: 1px solid white;
-    border-radius: 2%;
+    /* border-radius: 2%; */
 }
