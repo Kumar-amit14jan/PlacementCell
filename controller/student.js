@@ -3,6 +3,7 @@ const convertor = require('objects-to-csv');
 const Student = require('../models/student');
 const Interview = require('../models/interview');
 const Result = require('../models/result');
+const fs = require('fs');
 // employee dashboard list
 module.exports.dashboard = async function (req, res) {
     const studentList = await Student.find({});
@@ -41,13 +42,13 @@ module.exports.downloadData = async function (req, res) {
     const studentList = await Student.find({});
     const dataPresent = [];
     for (var i = 0; i < studentList.length; i++) {
-        const data1 = studentList[i];
-        for (var j = 0; j < data1.interviews.length; j++) {
-            const id = data1.interviews[j];
+        const student = studentList[i];
+        for (var j = 0; j < student.interviews.length; j++) {
+            const id = student.interviews[j];
             const interviewData = await Interview.findById(id);
             //find result
             var result = "On Hold";
-            const resultIndex = interviewData.result.indexOf(data1.id);
+            const resultIndex = interviewData.result.indexOf(student.id);
             if (resultIndex != -1) {
                 const resultData = await Result.find({ studentId: interviewData.result[resultIndex] });
                 for (var k = 0; k < resultData.length; k++) {
@@ -58,15 +59,15 @@ module.exports.downloadData = async function (req, res) {
                 }
             }
             const list = {
-                StudentId: data1.id,
-                Batch: data1.batch,
-                Name: data1.name,
-                Email: data1.email,
-                Status:data1.status,
-                College: data1.college,
-                DSA: data1.DSA_FinalScore,
-                WEBD: data1.WebD_FinalScore,
-                REACT: data1.React_FinalScore,
+                StudentId: student.id,
+                Batch: student.batch,
+                Name: student.name,
+                Email: student.email,
+                Status: student.status,
+                College: student.college,
+                DSA: student.DSA_FinalScore,
+                WEBD: student.WebD_FinalScore,
+                REACT: student.React_FinalScore,
                 CompanyName: interviewData.companyName,
                 InterviewDate: interviewData.date.toString().substring(4, 15),
                 Result: result
@@ -76,5 +77,8 @@ module.exports.downloadData = async function (req, res) {
     }
     const csv = new convertor(dataPresent);
     await csv.toDisk('./studentData.csv');
-    return res.download('./studentData.csv');
+    return res.download('./studentData.csv', () => {
+        //for deleting file
+        fs.unlinkSync('./studentData.csv');
+    });
 }

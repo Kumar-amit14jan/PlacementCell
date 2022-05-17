@@ -47,3 +47,9 @@ module.exports.createSession = async function (req, res) {
 
 
 }
+
+// to sign out
+module.exports.SignOut = async function(req ,res){
+    req.logout();
+    return res.redirect('/');
+}

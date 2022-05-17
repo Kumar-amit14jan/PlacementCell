@@ -5,6 +5,7 @@ const employee = require('../controller/employee');
 router.get('/', employee.SignInPage);
 router.post('/sign_in', passport.authenticate('local', { failureRedirect: '/' }), employee.SignIn);
 router.get('/signUp', employee.createSessionPage);
+router.get('/destroy_session' , employee.SignOut);
 router.post('/create_session', employee.createSession);
 router.use('/employee',passport.checkAuthentication, require('./employeedashboard'));
 router.use('/student',passport.checkAuthentication, require('./interview'));
