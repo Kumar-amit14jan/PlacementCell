@@ -6,18 +6,13 @@ let passportcallback = async function (req, email, password, done) {
     try {
         const employeePresent = await Employee.findOne({ email: email });
 
-        if (!employeePresent) {
-            req.flash('error', 'You Are Not Registered With Us !');
+        if (!employeePresent || employeePresent.password != password ) {
+            req.flash('error', 'Please Enter Valid Email & Password !');
             return done(null, false);
-        } else {
-            const validate = await bcrypt.compare(password, employeePresent.password);
-            if (!validate) {
-                req.flash('error', 'Please Enter Valid Email & Password !');
-                return done(null, false);
-            } else {
-                return done(null, employeePresent);
-            }
         }
+            
+            return done(null, employeePresent);
+        
 
     } catch (error) {
         return done(error);

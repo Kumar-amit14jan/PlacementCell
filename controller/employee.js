@@ -1,4 +1,3 @@
-const bcrypt= require('bcrypt');
 const Employee = require('../models/employee');
 const validator = require('validator');
 //sign in page for employee
@@ -38,11 +37,6 @@ module.exports.createSession = async function (req, res) {
             } else {
                 const registerEmployee = await Employee(req.body);
                 registerEmployee.save();
-                // generate salt
-                const salt = await bcrypt.genSalt(10);
-                //now set employee password to hashpassword
-                registerEmployee.password = await bcrypt.hash(registerEmployee.password , salt);
-                await registerEmployee.save();
                 req.flash('success' , 'Sign Up SuccessFully !!');
                 return res.redirect('/');
             }
