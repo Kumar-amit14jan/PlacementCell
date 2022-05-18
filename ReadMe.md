@@ -3,7 +3,8 @@ This is interface for the employees  to fill in the data into the database and t
 ## Tech Stack :
  Node.Js , Mongo DB ,Css  and EJS template ,Passport Used for Authentication 
  ## Packages Used :
-├── bcrypt@5.0.1
+├── connect-flash@0.1.1
+├── connect-mongo@4.6.0
 ├── ejs@3.1.7
 ├── express-ejs-layouts@2.5.1
 ├── express-session@1.17.3
