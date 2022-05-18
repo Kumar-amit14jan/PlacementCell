@@ -17,9 +17,7 @@ module.exports.SignIn = async function (req, res) {
 }
 // sign up page for employee
 module.exports.createSessionPage = async function (req, res) {
-    if(req.isAuthenticated()){
-        return res.redirect('/employee/dashboard');
-    }
+    
     return res.render('signup', {
         title: "Sign Up"
     });
