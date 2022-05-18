@@ -6,6 +6,7 @@ const app = express();
 const db = require(env.db_path);
 const flash = require('connect-flash');
 const session = require('express-session');
+const mongoStore = require('connect-mongo');
 const passport = require('passport');
 const passportLocal = require(env.passport_path);
 const customMware = require(env.customMware_path);
@@ -21,9 +22,14 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
+    },
+    store:mongoStore.create({
+        mongoUrl :'mongodb://localhost:27017/placementcell',
+        ttl: 14 * 24 * 60 * 60
+    })
     }
 
-}));
+));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

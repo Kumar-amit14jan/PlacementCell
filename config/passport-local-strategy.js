@@ -2,19 +2,20 @@ const passport = require('passport');
 const passportLocals = require('passport-local').Strategy;
 const Employee = require('../models/employee');
 const bcrypt = require('bcrypt');
-let passportcallback = async function (email, password, done) {
+let passportcallback = async function (req , email, password, done) {
     try {
         const employeePresent = await Employee.findOne({ email: email });
         const validate = await bcrypt.compare(password, employeePresent.password);
         if (!employeePresent || !validate) {
-            return done(null, flase);
+            req.flash('error' , 'Email Or Password is Not Valid');
+            return done(null, false);
         }
         return done(null, employeePresent);
     } catch (error) {
         return done(error);
     }
 }
-passport.use(new passportLocals({ usernameField: 'email' }, passportcallback));
+passport.use(new passportLocals({ usernameField: 'email' ,passReqToCallback:true}, passportcallback));
 passport.serializeUser(function (employee, done) {
     return done(null, employee.email);
 });

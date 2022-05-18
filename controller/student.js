@@ -22,14 +22,17 @@ module.exports.addStudentPage = async function (req, res) {
 module.exports.addStudent = async function (req, res) {
     try {
         if (!validator.isEmail(req.body.email)) {
+            req.flash('error' ,'Enter valid Email !!');
             return res.redirect('back');
         } else {
             const presentStudent = await Student.findOne({ email: req.body.email });
             if (presentStudent) {
+                req.flash('error' ,'Student Already Present!!');
                 return res.redirect('back');
             } else {
                 const addStudent = await Student(req.body);
                 await addStudent.save();
+                req.flash('success' , 'Student Added Successfully !!');
                 return res.redirect('/employee/dashboard');
             }
         }
