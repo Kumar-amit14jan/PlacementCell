@@ -1,6 +1,7 @@
+const env = require('./environment');
 const mongoose = require('mongoose');
 async function main(){
-    await mongoose.connect('mongodb+srv://placement:1UbhMXi13RXuCwSn@cluster0.p5gbb.mongodb.net/?retryWrites=true&w=majority');
+    await mongoose.connect(env.mongoose_path);
     console.log("connection Successfull !! ");
 }
 main().catch(error =>console.log("connection not successfull !!"));

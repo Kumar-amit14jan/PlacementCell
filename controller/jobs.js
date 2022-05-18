@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
+const env = require('../config/environment');
 module.exports.jobPage = async function (req, res) {
-    const response = await fetch('https://remotive.com/api/remote-jobs');
+    const response = await fetch(env.api_path);
     const jobsData = await response.json();
     return res.render('placementCell', {
         title: "Placement Cell",
