@@ -12,7 +12,6 @@ module.exports.resultPage = async function (req, res) {
 
 module.exports.update = async function (req, res) {
     try {
-        console.log(req.body.result);
         const updateResult = await Result(req.body);
         await updateResult.save();
         const id = req.body.interviewId;
@@ -22,14 +21,14 @@ module.exports.update = async function (req, res) {
             interviewResult.result.push(req.body.studentId);
             await interviewResult.save();
         }
-        if(req.body.result == "PASS"){
-            const sid = req.body.studentId;
-            const studentPresent = await Student.findById(sid);
+        if (req.body.result == "PASS") {
+            const studentId = req.body.studentId;
+            const studentPresent = await Student.findById(studentId);
             studentPresent.status = "placed";
             await studentPresent.save();
-            req.flash('success' , 'Status Updated !!');
+            req.flash('success', 'Status Updated !!');
         }
-        req.flash('success' , 'Result Updated !!');
+        req.flash('success', 'Result Updated !!');
         return res.redirect('back');
     } catch (error) {
         return res.send("Error in updating data")

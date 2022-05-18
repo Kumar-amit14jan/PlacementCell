@@ -13,11 +13,11 @@
                 <th>Result</th>
             </tr>
             <tr>
-                <td>
-                    <%= companyResult.companyName %>
-                </td>
-                <% for(var i=0 ; i<companyResult.students.length ; i++ ) { %>
 
+                <% for(var i=0 ; i<companyResult.students.length ; i++ ) { %>
+                    <td>
+                        <%= companyResult.companyName %>
+                    </td>
                     <td>
                         <%= companyResult.students[i].name %>
                     </td>
@@ -25,12 +25,16 @@
                         <%= companyResult.students[i].email %>
                     </td>
                     <td>
-                        <form action="/result/update" method="POST">
-                            <input type="text" name="result" placeholder="Update Result" required="true">
-                            <input type="hidden" name="interviewId" value="<%= companyResult.id %>">
-                            <input type="hidden" name="studentId" value="<%= companyResult.students[i].id %>">
-                            <button>Update</button>
-                        </form>
+                        <% if(companyResult.result.indexOf(companyResult.students[i].id)==-1) { %>
+                            <form action="/result/update" method="POST">
+                                <input type="text" name="result" placeholder="Update Result" required="true">
+                                <input type="hidden" name="interviewId" value="<%= companyResult.id %>">
+                                <input type="hidden" name="studentId" value="<%= companyResult.students[i].id %>">
+                                <button>Update</button>
+                            </form>
+                            <%}else{ %>
+                                <button>I am done !</button>
+                                <%}%>
                     </td>
             </tr>
             <% } %>

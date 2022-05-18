@@ -24,7 +24,7 @@ app.use(session({
         maxAge: (1000 * 60 * 100)
     },
     store:mongoStore.create({
-        mongoUrl :'mongodb://localhost:27017/placementcell',
+        mongoUrl :env.mongoose_path,
         ttl: 14 * 24 * 60 * 60
     })
     }
