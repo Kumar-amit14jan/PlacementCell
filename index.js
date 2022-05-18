@@ -1,7 +1,7 @@
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
 const env = require('./config/environment');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT|| 8000;
 const app = express();
 const db = require(env.db_path);
 const flash = require('connect-flash');
