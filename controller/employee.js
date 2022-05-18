@@ -18,7 +18,7 @@ module.exports.SignIn = async function (req, res) {
 // sign up page for employee
 module.exports.createSessionPage = async function (req, res) {
     
-    return res.render('signup', {
+    return res.render('signUp', {
         title: "Sign Up"
     });
 }
