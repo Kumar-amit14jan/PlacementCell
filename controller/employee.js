@@ -23,6 +23,24 @@ module.exports.createSessionPage = async function (req, res) {
 }
 module.exports.createSession = async function (req, res) {
     try {
+        if(req.body.firstname.length === 0){
+            req.flash('error' , 'FirstName is not empty');
+            return res.redirect('back');
+        }
+        if(!isNaN(req.body.firstname)){
+            req.flash('error' , 'FirstName is not number');
+            return res.redirect('back');
+        }
+        // for lastname
+        if(req.body.lastname.length === 0){
+            req.flash('error' , 'LastName is not empty');
+            return res.redirect('back');
+        }
+        if(!isNaN(req.body.lastname)){
+            req.flash('error' , 'LastName is not number');
+            return res.redirect('back');
+        }
+        // check on email
         if (!validator.isEmail(req.body.email)) {
             req.flash('error' , 'Please Enter Valid Email ');
             return res.redirect('back');

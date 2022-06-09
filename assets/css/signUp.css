@@ -21,6 +21,26 @@ input{
     font-size: 20px;
     border: 2px solid lightgrey;
 }
+i{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: -2.5%;
+    visibility: hidden;
+}
+/* success{
+    visibility: visible;
+} */
+.error{
+    color: red;
+}
+.success{
+    color: lightgreen;
+}
+.error{
+    float: left;
+    margin-left: 20%;
+    visibility: hidden;
+}
 input:focus { 
     outline: none ;
     border: 1px solid cyan;
