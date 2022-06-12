@@ -27,20 +27,11 @@ i{
     margin-left: -2.5%;
     visibility: hidden;
 }
-/* success{
-    visibility: visible;
-} */
-.error{
+small{
     color: red;
+    font-size: 16px;
 }
-.success{
-    color: lightgreen;
-}
-.error{
-    float: left;
-    margin-left: 20%;
-    visibility: hidden;
-}
+
 input:focus { 
     outline: none ;
     border: 1px solid cyan;
