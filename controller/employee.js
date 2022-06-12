@@ -85,7 +85,7 @@ module.exports.createSession = async function (req, res) {
             const employeePresent = await Employee.findOne({ email: req.body.email });
             if (employeePresent) {
                 req.flash('error', 'Employee Already Exist !!');
-                return res.redirect('back');
+                return res.redirect('/');
             } else {
                 const registerEmployee = await Employee(req.body);
                 registerEmployee.save();
